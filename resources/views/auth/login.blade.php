@@ -1,7 +1,39 @@
-@extends('layouts.app')
+@extends('layouts.login&register')
 
 @section('content')
-<div class="container">
+
+<div class="m-h-72 p-2 w-5/12 mx-auto shadow mt-5 rounded" dir="rtl">
+    <form action="{{route('login')}}" method="post" class="space-y-3">
+        @csrf
+        <div class="text-center ">
+            <i class="fa-solid fa-store h-16 w-16 bg-green-600 rounded-full text-white text-3xl text-center p-2 pt-3"></i>
+        </div>
+        <div class="bg-gray-300 rounded-xl p-1">
+            <p class="mx-2">ئیمەیڵ</p>
+            <input type="text" value="{{old('email')}}" name="email" placeholder="example@gmail.com" class="bg-transparent focus:outline-none mx-2">
+        </div>
+        @error('email')
+            <p class="text-red-400 text-sm mx-1">
+                <strong>{{ $message }}</strong>
+            </p>
+        @enderror
+        <div class="bg-gray-300 rounded-xl p-1">
+            <p class="mx-2">وشەی نهێنی</p>
+            <input type="password" name="password" placeholder="********" class="bg-transparent focus:outline-none mx-2">
+        </div>
+        @error('password')
+            <p class="text-red-400 text-sm mx-1">
+                <strong>{{ $message }}</strong>
+            </p>
+        @enderror
+        <button class="text-white bg-green-600 rounded-xl p-2 font-bold mt-3 text-right">چونەژوورەوە</button> 
+    </form>
+    <div class="text-left m-2">
+        <a href="{{route('register')}}" class="text-green-600 font-bold border-b-2 border-green-600 text-">تۆماربوون</a>
+    </div>
+    
+</div>
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +101,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
