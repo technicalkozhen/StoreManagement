@@ -22,7 +22,6 @@ class productRequest extends FormRequest
                 'name'=>'required',
                 'price'=>'required|numeric',
                 'code'=>'required',
-                'discount'=>'required',
                 'file'=>'nullable|mimes:png,jpg,jpeg',
                 ];
         }else{

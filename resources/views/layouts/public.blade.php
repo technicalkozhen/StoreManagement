@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Fastfood</title>
+    <title>storeManagement</title>
     @vite('resources/css/app.css')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -31,14 +31,20 @@
         </div>
     </div>
     <div class="flex">
-        <div class="basis-2/12 border-l-2 bg-gray-400 p-3 text-white">
+        <div class="basis-2/12 border-l-2 bg-gray-500 p-3 text-white">
+            <div class="mb-3">
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    <button class="text-sm">چونەدەرەوە</button>
+                </form>
+            </div>
             <div class="mb-3">
                 <i class="fa-solid fa-bars"></i>
                 <a href="" class="font-bold p-2 text-white">داشبۆرد</a>
             </div>
             <div class="mb-3">
                 <i class="fa-solid fa-house"></i>
-                <a href="" class="font-bold p-2 text-white">سەرەکی</a>
+                <a href="{{route('public')}}" class="font-bold p-2 text-white">سەرەکی</a>
             </div>
             <div class="mb-3">
                 <i class="fa-solid fa-user"></i>
@@ -48,19 +54,23 @@
                 <i class="fa-solid fa-pen-to-square"></i>
                 <a href="{{route('product.index')}}" class="font-bold p-2 text-white">کاڵاکان</a>
             </div>
+            <div class="mb-2">
+                <i class="fa-solid fa-dollar"></i>
+                <a href="{{route('expense.index')}}" class="font-bold p-2 text-white">خەرجی</a>
+            </div>
             <div class="relative">
                 <div onclick="showMenuInvoice()" class="flex items-center cursor-pointer">
                     <i class="fa-solid fa-file-invoice-dollar"></i>
                     <p href="" class="font-bold p-2">پسوڵەکان</p>
                     <i class="fa-solid fa-chevron-left"></i>
                 </div>
-                <div id="invoice" class="absolute top-8 p-1 z-1 hidden bg-red-200">
-                    <div>
-                        <a class="text-sm" href="">- پسوڵەی کڕین </a>
+                <div id="invoice" class="text-sm z-1 hidden space-y-2">
+                    {{-- <div>
+                        <a href="{{route('invoiceBuy')}}">- پسوڵەی کڕین </a>
                     </div>
                     <div>
-                        <a class="text-sm" href="">- پسوڵەی فرۆشتن</a>
-                    </div>
+                        <a href="{{route('invoiceSellw')}}">- پسوڵەی فرۆشتن</a>
+                    </div> --}}
                 </div>
             </div>
             <div class="relative">

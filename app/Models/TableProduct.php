@@ -15,5 +15,6 @@ class TableProduct extends Model
         'price',
         'quantity',
         'totalprice',
+        'product_id',
     ];
 }
