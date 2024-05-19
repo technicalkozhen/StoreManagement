@@ -9,6 +9,8 @@ use App\Models\TableProduct;
 use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class PublicController extends Controller
 {
@@ -60,15 +62,22 @@ class PublicController extends Controller
                                 'state'=>$state
         ]);
 
+
         $t_p=TableProduct::all();                  
             foreach($t_p as $table_pro){
+                $product=Product::findorfail($table_pro->product_id);
+
+                $oldPath='products/'.$product->image.'';
+                $newPath='productInvoice/'.$product->image.'';
+                File::copy($oldPath , $newPath);
+                
                 ProductInvoice::create(['invoice_id'=>$invoice->id,
                                         'product_id'=>$table_pro->product_id,
                                         'price'=>$table_pro->price,
                                         'quantity'=>$table_pro->quantity,
                                         'name'=>$table_pro->name,
                                         'code'=>$table_pro->code,
-
+                                        'image'=>$product->image
                 ]);
             }
 

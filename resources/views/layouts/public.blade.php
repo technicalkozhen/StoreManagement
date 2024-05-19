@@ -32,62 +32,56 @@
     </div>
     <div class="flex">
         <div class="basis-2/12 border-l-2 bg-gray-500 p-3 text-white">
-            <div class="mb-3">
-                <form action="{{route('logout')}}" method="post">
-                    @csrf
-                    <button class="text-sm">چونەدەرەوە</button>
-                </form>
-            </div>
-            <div class="mb-3">
+            <div class="mb-3 hover:text-red-400">
                 <i class="fa-solid fa-bars"></i>
                 <a href="" class="font-bold p-2 text-white">داشبۆرد</a>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 hover:text-red-400" >
                 <i class="fa-solid fa-house"></i>
-                <a href="{{route('public')}}" class="font-bold p-2 text-white">سەرەکی</a>
+                <a href="{{route('public')}}" class="font-bold p-2 text-white {{in_array(Route::currentRouteName(),['public'])?'border-b-2 border-red-400':''}}">سەرەکی</a>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 hover:text-red-400">
                 <i class="fa-solid fa-user"></i>
-                <a href="" class="font-bold p-2 text-white">بەکارهێنەرەکان</a>
+                <a href="{{route('user.index')}}" class="font-bold p-2 text-white {{in_array(Route::currentRouteName(),['user.index','user.create','user.edit'])?'border-b-2 border-red-400':''}}">بەکارهێنەرەکان</a>
             </div>
-            <div class="mb-2">
+            <div class="mb-3 hover:text-red-400">
                 <i class="fa-solid fa-pen-to-square"></i>
-                <a href="{{route('product.index')}}" class="font-bold p-2 text-white">کاڵاکان</a>
+                <a href="{{route('product.index')}}" class="font-bold p-2 text-white {{in_array(Route::currentRouteName(),['product.index','product.create','product.edit'])?'border-b-2 border-red-400':''}}">کاڵاکان</a>
             </div>
-            <div class="mb-2">
+            <div class="mb-2 hover:text-red-400">
                 <i class="fa-solid fa-dollar"></i>
-                <a href="{{route('expense.index')}}" class="font-bold p-2 text-white">خەرجی</a>
+                <a href="{{route('expense.index')}}" class="font-bold p-2 text-white {{in_array(Route::currentRouteName(),['expense.index','expense.create','expense.edit'])?'border-b-2 border-red-400':''}}">خەرجی</a>
             </div>
             <div class="relative">
-                <div onclick="showMenuInvoice()" class="flex items-center cursor-pointer">
+                <div onclick="showMenuInvoice()" class="flex items-center cursor-pointer hover:text-red-400">
                     <i class="fa-solid fa-file-invoice-dollar"></i>
-                    <p href="" class="font-bold p-2">پسوڵەکان</p>
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <p href="" class="font-bold p-2 text-white">پسوڵەکان</p>
+                    <i class="fa-solid fa-chevron-left text-white"></i>
                 </div>
                 <div id="invoice" class="text-sm z-1 hidden space-y-2">
-                    {{-- <div>
-                        <a href="{{route('invoiceBuy')}}">- پسوڵەی کڕین </a>
+                    <div>
+                        <a href="{{route('invoiceBuy.index')}}">- پسوڵەی کڕین </a>
                     </div>
                     <div>
-                        <a href="{{route('invoiceSellw')}}">- پسوڵەی فرۆشتن</a>
-                    </div> --}}
+                        <a href="">- پسوڵەی فرۆشتن</a>
+                    </div>
                 </div>
             </div>
             <div class="relative">
-                <div onclick="showMenuReport()" class="flex items-center cursor-pointer">
+                <div onclick="showMenuReport()" class="flex items-center cursor-pointer hover:text-red-400">
                     <i class="fa-solid fa-file-invoice"></i>
-                    <p href="" class="font-bold p-2">راپۆرتەکان</p>
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <p href="" class="font-bold p-2 text-white">راپۆرتەکان</p>
+                    <i class="fa-solid fa-chevron-left text-white"></i>
                 </div>
-                <div id="report" class="absolute top-8 p-1 z-1 hidden">
+                <div id="report" class="text-sm z-1 hidden space-y-2">
                     <div>
-                        <a class="text-sm" href="">- خەرجی</a>
+                        <a  href="">- خەرجی</a>
                     </div>
                     <div>
-                        <a class="text-sm" href="">- کۆی خەرجی</a>
+                        <a  href="">- کۆی خەرجی</a>
                     </div>
                     <div>
-                        <a class="text-sm" href="">- پسوڵەکان</a>
+                        <a  href="">- پسوڵەکان</a>
                     </div>
                     <div>
                         <a class="text-sm" href="">- کاڵاکان</a>
@@ -97,7 +91,13 @@
                     </div>
                 </div>
             </div>
-           
+            <div class="flex items-center cursor-pointer hover:text-red-400 ">
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <button class="font-bold p-2 text-white">چونەدەرەوە</button>
+                </form>
+            </div>
            
         </div>
         <div class="basis-10/12 overflow-y-scroll h-[600px]">

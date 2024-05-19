@@ -2,7 +2,6 @@
 
 @section('content')
 
-@extends('layouts.public')
 <div class="mt-10">
     <a href="{{route('expense.index')}}" class="rounded bg-blue-400 p-2 mr-28 text-white font-bold">گەڕانەوە</a>
 </div>

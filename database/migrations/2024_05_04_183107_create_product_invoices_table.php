@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('code');
             $table->double('price');
             $table->string('quantity');
+            $table->string('image');
             $table->timestamps();
         });
     }

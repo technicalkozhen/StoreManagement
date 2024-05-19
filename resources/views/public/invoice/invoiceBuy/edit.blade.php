@@ -1,16 +1,17 @@
 @extends('layouts.public')
 @section('content')
 <div class="mt-10">
-    <a href="{{route('product.index')}}" class="rounded bg-blue-400 p-2 mr-28 text-white font-bold">گەڕانەوە</a>
+    <a href="{{route('invoiceBuy.show',['invoiceBuy'=>$product->invoice_id])}}" class="rounded bg-blue-400 p-2 mr-28 text-white font-bold">گەڕانەوە</a>
 </div>
 <div class="rounded w-10/12 mx-auto shadow-lg mt-10">
     @if (session()->has('msg'))
         <p class="text-center bg-blue-300 text-white p-2 rounded w-5/12 mx-auto mb-5">{{session()->get('msg')}}</p>
     @endif
-    <form action="{{route('product.update',['product'=>$product->id])}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('invoiceBuy.update',['invoiceBuy'=>$product->invoice_id])}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="grid grid-cols-3 gap-5 w-11/12 mx-auto p-2">
+            <input type="text" name="prod_id" value="{{$product->product_id}}" class="bg-green-500 ">
             <div>
                 <p>ناو</p>
                 <input type="text" name="name" class="bg-gray-200 rounded p-2" value="{{$product->name}}">
@@ -30,9 +31,9 @@
                 @enderror
             </div>
             <div>
-                <p>کۆد</p>
-                <input type="text" name="code" class="bg-gray-200 rounded p-2" value="{{$product->code}}">
-                @error('code')
+                <p>دانە</p>
+                <input type="text" name="quantity" class="bg-gray-200 rounded p-2" value="{{$product->quantity}}">
+                @error('quantity')
                     <p class="text-red-500 mt-2">
                         {{ $message }} 
                     </p>
@@ -47,11 +48,20 @@
                     </p>
                 @enderror
             </div>
+            <div>
+                <p>کۆد</p>
+                <input type="text" name="code" class="bg-gray-200 rounded p-2" value="{{$product->code}}">
+                @error('code')
+                    <p class="text-red-500 mt-2">
+                        {{ $message }} 
+                    </p>
+                @enderror
+            </div>
         </div>
         <button class="rounded bg-blue-400 p-2 mr-12 m-2 text-white font-bold">نوێ کردنەوە</button>
      </form>
 
-     <form id="form_alert" action="{{route('product.destroy',['product'=>$product->id])}}" method="post">
+     <form id="form_alert" action="{{route('invoiceBuy.destroy',['invoiceBuy'=>$product->id])}}" method="post">
         @csrf
         @method('DELETE')
         <button type="button" onclick="alert()"  class="rounded bg-red-400 p-2 mr-12 m-2 text-white font-bold">سڕینەوە</button>

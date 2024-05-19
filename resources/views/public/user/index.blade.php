@@ -2,7 +2,7 @@
 @section('content')
 <div class="relative mt-5">
     <div class="mr-4">
-        <a href="{{route('product.create')}}" class="bg-blue-300 p-1 pb-2 m-5 rounded">زیادکردن</a>
+        <a href="{{route('user.create')}}" class="bg-blue-300 m-5 p-1 pb-2 rounded">زیادکردن</a>
         <a href="{{route('public')}}" class="bg-blue-300 p-1 pb-2 rounded">گەڕانەوە</a>
     </div>
 
@@ -10,16 +10,13 @@
         <thead class="text-xs text-center text-gray-700 uppercase bg-blue-300 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    ناوی مادە
+                    ناو
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    کۆد
+                    ئیمەیڵ
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    نرخ
-                </th>
-                <th scope="col" class="px-6 py-3 ">
-                    وێنە
+                    ئەرک
                 </th>
                 <th scope="col" class="px-6 py-3">
                     کردارەکان
@@ -27,29 +24,24 @@
                
         </thead>
         <tbody class="text-center">
-            @foreach ($product as $pro)
+            @foreach ($user as $user1)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{$pro->name}}
+                        {{$user1->name}}
                     </th>
                     <td class="px-6 py-4">
-                        {{$pro->code}}
+                        {{$user1->email}}
                     </td>
                     <td class="px-6 py-4">
-                        {{$pro->price}}
+                        {{$user1->role}}
                     </td>
                     <td class="px-6 py-4">
-                        <div class="flex items-center justify-center">
-                            <img src="{{asset('products/'.$pro->image.'')}}" class="rounded h-12 w-12">
-                        </div>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="{{route('product.edit',["product"=>$pro->id])}}"><i class="fa-solid fa-pen"></i></a>
+                        <a href="{{route('user.edit',["user"=>$user1->id])}}"><i class="fa-solid fa-pen"></i></a>
                     </td>
                 </tr>   
             @endforeach
         </tbody>
     </table>
 </div>
-{!! $product->links() !!}
+{!! $user->links() !!}
 @endsection

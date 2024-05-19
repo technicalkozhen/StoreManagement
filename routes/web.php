@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\expensesController;
+use App\Http\Controllers\InvoiceBuyController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,6 +22,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('public/product', ProductController::class)->except('show');
     Route::resource('public/expense', expensesController::class)->except('show');
+    Route::resource('public/user', userController::class)->except('show');
+    Route::resource('public/invoiceBuy', InvoiceBuyController::class)->except('create','store');
+
+
 
 
 });

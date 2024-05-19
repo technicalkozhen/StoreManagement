@@ -56,7 +56,7 @@
                                     {{$tab_pro->name}}
                                 </th>
                                 <td class="px-5 py-4">
-                                    
+                                    {{$tab_pro->code}}
                                 </td>
                                 <td class="px-5 py-4">
                                     {{$tab_pro->price}}
@@ -83,14 +83,10 @@
             </div>
         </div>
       </div>
-      <div class="absolute right-50 bottom-2 w-9/12 flex items-center space-x-2 rtl:space-x-reverse">
+      <div class="absolute right-50 bottom-2 w-9/12 flex space-x-20 items-center space-x-2 rtl:space-x-reverse">
         <div class="flex w-4/12 justify-between">
             <a href="{{route('buyproduct',['state'=>1])}}" class="bg-green-500 text-white rounded-lg p-2 py-2 w-5/12 text-center font-bold">کڕین</a> 
             <a href="{{route('sellproduct',['state'=>0])}}" class="bg-green-500 text-white rounded-lg p-2 py-2 w-5/12 text-center font-bold">فرۆشتن</a> 
-        </div>
-        <div class="flex w-4/12">
-            <p class="bg-yellow-300 rounded p-2">ژمارەی پسوڵە</p>
-            <p class="border-2  w-8/12">ewe</p>
         </div>
         <div class="flex w-4/12">
             <p class="bg-yellow-300 rounded p-2">کۆی گشتی</p>

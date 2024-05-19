@@ -15,5 +15,13 @@ class ProductInvoice extends Model
         'code',
         'price',
         'quantity',
+        'image'
     ];
+
+    public function products()
+    {
+        return $this->hasMany(ProductInvoice::class, 'invoice_id');
+    }
+
+
 }
