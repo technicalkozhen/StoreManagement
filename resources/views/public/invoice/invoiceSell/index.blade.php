@@ -38,7 +38,7 @@
                         {{$invoices->created_at->format('Y-m-d')}}
                     </td>
                     <td class="px-6 py-4">
-                        <a href="{{route('invoiceBuy.show',["invoiceBuy"=>$invoices->id])}}"><i class="fa-solid fa-eye text-xl"></i></a>
+                        <a href="{{route('invoiceSell.show',["invoiceSell"=>$invoices->id])}}"><i class="fa-solid fa-eye text-xl"></i></a>
                     </td>
                     <td class="px-6 py-4">
                     @foreach ($invoices->productinvoices as $prod_invoice)
@@ -53,7 +53,7 @@
                      
                     </td>
                     <td class="px-6 py-4">
-                        <a href="{{route('deleteInvoice',['id'=>$invoices->id])}}"><i class="fa-solid fa-trash text-red-500 text-lg"></i></a>
+                        <a href=""><i class="fa-solid fa-trash text-red-500 text-lg"></i></a>
                     </td>
                 </tr>   
             @endforeach

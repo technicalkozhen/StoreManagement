@@ -90,17 +90,26 @@ class PublicController extends Controller
         return redirect()->back();
     }
     public function sellproduct($state){
-        
         $invoice=Invoice::create(['user_id'=>Auth::id(),
                                 'state'=>$state
         ]);
 
+
         $t_p=TableProduct::all();                  
             foreach($t_p as $table_pro){
+                $product=Product::findorfail($table_pro->product_id);
+
+                $oldPath='products/'.$product->image.'';
+                $newPath='productInvoice/'.$product->image.'';
+                File::copy($oldPath , $newPath);
+                
                 ProductInvoice::create(['invoice_id'=>$invoice->id,
                                         'product_id'=>$table_pro->product_id,
                                         'price'=>$table_pro->price,
                                         'quantity'=>$table_pro->quantity,
+                                        'name'=>$table_pro->name,
+                                        'code'=>$table_pro->code,
+                                        'image'=>$product->image
                 ]);
             }
 
@@ -110,7 +119,6 @@ class PublicController extends Controller
                                 'email'=>auth()->user()->email,
                                 'type_activity' => 'زیادکردنی پسوڵەی فرۆشتن'
         ]);
-        
         return redirect()->back();
     }
 

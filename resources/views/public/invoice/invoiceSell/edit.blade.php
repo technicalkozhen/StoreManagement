@@ -7,10 +7,11 @@
     @if (session()->has('msg'))
         <p class="text-center bg-blue-300 text-white p-2 rounded w-5/12 mx-auto mb-5">{{session()->get('msg')}}</p>
     @endif
-    <form action="{{route('invoiceBuy.update',['invoiceBuy'=>$product->id])}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('invoiceBuy.update',['invoiceBuy'=>$product->invoice_id])}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="grid grid-cols-3 gap-5 w-11/12 mx-auto p-2">
+            <input type="text" name="prod_id" value="{{$product->product_id}}" class="bg-green-500 ">
             <div>
                 <p>ناو</p>
                 <input type="text" name="name" class="bg-gray-200 rounded p-2" value="{{$product->name}}">

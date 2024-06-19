@@ -8,28 +8,29 @@ use App\Models\ProductInvoice;
 use App\Models\UserActivity;
 use Illuminate\Http\Request;
 
-class InvoiceBuyController extends Controller
+class InvoiceSellController extends Controller
 {
-
     public function index()
     {
-        $invoice=Invoice::where('state',1)->with('productinvoices')->with('users')->latest()->paginate(10);
+        $invoice=Invoice::where('state',0)->with('productinvoices')->with('users')->latest()->paginate(10);
         $totalprice=0;
-        return view('public.invoice.invoiceBuy.index',compact('invoice','totalprice'));
+        return view('public.invoice.invoiceSell.index',compact('invoice','totalprice'));
+        
+        
     }
 
 
     public function show($id)
     {
         $product=ProductInvoice::where('invoice_id',$id)->latest()->paginate(6);
-        return view('public.invoice.invoiceBuy.show',compact('product'));
+        return view('public.invoice.invoiceSell.show',compact('product'));
     }
 
    
     public function edit($id)
     {
         $product=ProductInvoice::findorfail($id);
-        return view('public.invoice.invoiceBuy.edit',compact('product'));
+        return view('public.invoice.invoiceSell.edit',compact('product'));
     }
 
     public function update(productInvoiceRequest $request, $id)
@@ -53,7 +54,7 @@ class InvoiceBuyController extends Controller
 
         UserActivity::create([  'name'=>auth()->user()->name,
                                 'email'=>auth()->user()->email,
-                                'type_activity' => 'نوێ کردنەوەی پسوڵەی کڕین'
+                                'type_activity' => 'نوێ کردنەوەی پسوڵەی فرۆشتن'
                             ]);
 
         return redirect()->back()->with(['msg'=>'بەسەرکەوتوی نوێ کرایەوە']);
@@ -72,8 +73,8 @@ class InvoiceBuyController extends Controller
 
         UserActivity::create([  'name'=>auth()->user()->name,
                                 'email'=>auth()->user()->email,
-                                'type_activity' => 'سڕینەوەی بەرهەمی پسوڵەی کڕین'
-        ]);
+                                'type_activity' => 'سڕینەوەی بەرهەمی پسوڵەی فرۆشتن'
+                            ]);
         return redirect()->back();
 
     }
@@ -92,13 +93,9 @@ class InvoiceBuyController extends Controller
 
         UserActivity::create([  'name'=>auth()->user()->name,
                                 'email'=>auth()->user()->email,
-                                'type_activity' => ' سڕینەوەی پسوڵەی کڕین'
-        ]);
+                                'type_activity' => ' سڕینەوەی پسوڵەی فرۆشتن'
+                            ]);
         return redirect()->back();
 
     }
-
-    
-
-
 }

@@ -17,6 +17,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+     public function loggg(){
+        auth()->user()->log();
+    }
+    
     protected $fillable = [
         'name',
         'email',

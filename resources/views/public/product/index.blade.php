@@ -5,7 +5,7 @@
         <a href="{{route('product.create')}}" class="bg-blue-300 p-1 pb-2 m-5 rounded">زیادکردن</a>
         <a href="{{route('public')}}" class="bg-blue-300 p-1 pb-2 rounded">گەڕانەوە</a>
     </div>
-
+    
     <table class="w-10/12 mx-auto text-sm rtl:text-right text-gray-500 dark:text-gray-400 mt-10 shadow-xl rounded-2xl overflow-hidden">
         <thead class="text-xs text-center text-gray-700 uppercase bg-blue-300 dark:bg-gray-700 dark:text-gray-400">
             <tr>

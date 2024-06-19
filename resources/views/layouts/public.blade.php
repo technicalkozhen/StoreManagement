@@ -63,7 +63,7 @@
                         <a href="{{route('invoiceBuy.index')}}">- پسوڵەی کڕین </a>
                     </div>
                     <div>
-                        <a href="">- پسوڵەی فرۆشتن</a>
+                        <a href="{{route('invoiceSell.index')}}">- پسوڵەی فرۆشتن</a>
                     </div>
                 </div>
             </div>
@@ -75,10 +75,10 @@
                 </div>
                 <div id="report" class="text-sm z-1 hidden space-y-2">
                     <div>
-                        <a  href="">- خەرجی</a>
+                        <a  href="{{route('expenseReport')}}">- خەرجی</a>
                     </div>
                     <div>
-                        <a  href="">- کۆی خەرجی</a>
+                        <a  href="{{route('expenseSumReport')}}">- کۆی خەرجی</a>
                     </div>
                     <div>
                         <a  href="">- پسوڵەکان</a>
