@@ -4,10 +4,12 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\expensesController;
 use App\Http\Controllers\InvoiceBuyController;
 use App\Http\Controllers\InvoiceSellController;
-use App\Http\Controllers\PrintController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\userController;
 use App\Models\expense;
+use App\Models\Invoice;
+use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -62,6 +64,20 @@ Route::middleware(['auth'])->group(function () {
         }
         return view('public.print.expenseSumReport',compact('data','prices'));
     })->name('expenseSumReport');
+
+    Route::get('invoiceReport', function(){
+        $invoice=Invoice::with('productinvoices')->with('users')->get();
+        $totalprice=0;
+       return view('public.print.invoiceReport',compact('invoice','totalprice'));
+    })->name('invoiceReport');
+
+    Route::get('productReport', function(Request $request){
+        $product=Product::query();
+        if($request->search){
+            $product->where('name','like','%'.$request->search.'%');
+        }
+       return view('public.print.productReport',compact('product'));
+    })->name('productReport');
 
 });
 

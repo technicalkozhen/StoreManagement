@@ -81,10 +81,10 @@
                         <a  href="{{route('expenseSumReport')}}">- کۆی خەرجی</a>
                     </div>
                     <div>
-                        <a  href="">- پسوڵەکان</a>
+                        <a  href="{{route('invoiceReport')}}">- پسوڵەکان</a>
                     </div>
                     <div>
-                        <a class="text-sm" href="">- کاڵاکان</a>
+                        <a class="text-sm" href="{{route('productReport')}}">- کاڵاکان</a>
                     </div>
                     <div>
                         <a class="text-sm" href="">- چالاکی سیستەم</a>
