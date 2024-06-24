@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        UserActivity::create([  'name'=>auth()->user()->name,
+                                'email'=>auth()->user()->email,
+                                'type_activity' => 'چونەژورەوە'
+                            ]);
         return redirect()->route('public');
     }
 }

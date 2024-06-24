@@ -9,6 +9,7 @@ use App\Http\Controllers\userController;
 use App\Models\expense;
 use App\Models\Invoice;
 use App\Models\Product;
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -78,6 +79,16 @@ Route::middleware(['auth'])->group(function () {
         }
        return view('public.print.productReport',compact('product'));
     })->name('productReport');
+
+    Route::get('userActivityReport', function(){
+        $user_activity=UserActivity::all();
+        return view('public.print.userActivityReport',compact('user_activity'));
+    })->name('userActivityReport');
+
+    Route::post('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+
+
 
 });
 

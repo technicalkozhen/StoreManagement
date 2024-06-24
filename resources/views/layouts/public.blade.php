@@ -87,7 +87,7 @@
                         <a class="text-sm" href="{{route('productReport')}}">- کاڵاکان</a>
                     </div>
                     <div>
-                        <a class="text-sm" href="">- چالاکی سیستەم</a>
+                        <a class="text-sm" href="{{route('userActivityReport')}}">- چالاکی سیستەم</a>
                     </div>
                 </div>
             </div>
