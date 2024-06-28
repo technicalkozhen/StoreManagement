@@ -25,14 +25,25 @@ class PublicController extends Controller
     }
     public function addProductToTable($id){
         $product=product::findorfail($id);
-
-        TableProduct::create(['name'=>$product->name,
-                                    'price'=>$product->price,
-                                    'quantity'=>$product->quantity,
-                                    'totalprice'=>($product->price)*($product->quantity),
-                                    'product_id'=>$product->id,
-                                    'code'=>$product->code,
-                                        ]);
+        $val=TableProduct::where('product_id',$product->id)->where('quantity','>',0)->first();
+        if($val){
+            TableProduct::create([      'name'=>$product->name,
+                                        'price'=>$product->price,
+                                        'quantity'=>($product->quantity + $val->quantity),
+                                        'totalprice'=>((($product->price)*($product->quantity))+(($val->price)*($val->quantity))),
+                                        'product_id'=>$product->id,
+                                        'code'=>$product->code,
+                                ]);
+            $val->delete();
+        }else{
+            TableProduct::create([      'name'=>$product->name,
+                                        'price'=>$product->price,
+                                        'quantity'=>$product->quantity,
+                                        'totalprice'=>($product->price)*($product->quantity),
+                                        'product_id'=>$product->id,
+                                        'code'=>$product->code,
+                                ]);
+        }
         return redirect()->back();
     }
     public function deleteProductToTable($id){
